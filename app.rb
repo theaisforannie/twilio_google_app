@@ -28,6 +28,7 @@ get '/' do
 	twiml = Twilio::TwiML::Response.new do |r|
 		r.Message search_results
 	end
+	twiml.text
 
 	# if f == nil || f.strip == ""
 	# 	msg = "say something pls"
