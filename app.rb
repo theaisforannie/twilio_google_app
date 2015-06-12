@@ -28,5 +28,5 @@ get '/' do
   params.each do |k, v|
   	s = s + k.to_s + "\n"
   end
-  s
+  params['Body'] + ' your face'
 end
