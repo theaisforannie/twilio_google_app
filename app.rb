@@ -19,14 +19,8 @@ auth_token = ENV['MY_SEKRET_TWILIO_TOKEN']
 
 get '/' do 
 	puts params
-	# print params
-	# twiml = Twilio::TwiML::Response.new do |r|
-	# 	r.Message params
-	# end
-	# twiml.text
-	s = ""
-  params.each do |k, v|
-  	s = s + k.to_s + "\n"
-  end
-  params['Body'] + ' your face'
+	twiml = Twilio::TwiML::Response.new do |r|
+		r.Message params['Body'] + ' your face'
+	end
+	twiml.text
 end
