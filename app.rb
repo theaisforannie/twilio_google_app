@@ -19,8 +19,19 @@ auth_token = ENV['MY_SEKRET_TWILIO_TOKEN']
 
 get '/' do 
 	puts params
-	twiml = Twilio::TwiML::Response.new do |r|
-		r.Message params['Body'] + ' your face'
+	# twiml = Twilio::TwiML::Response.new do |r|
+	# 	r.Message params['Body'] + ' your face'
+	# end
+	# twiml.text
+	f = params['Body']
+	if f == nil
+		msg = "say something pls"
+	else
+		msg = f + ' your face, I can write angle brackets too'
 	end
-	twiml.text
+
+	'<?xml version="1.0" encoding="UTF-8"?>
+	<Response>
+	    <Message>' + msg + '</Message>
+	</Response>'
 end
