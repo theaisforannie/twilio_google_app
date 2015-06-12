@@ -27,7 +27,7 @@ get '/' do
 	if f == nil || f.strip == ""
 		msg = "say something pls"
 	else
-		msg = f + ' your face, I can write angle brackets too'
+		msg = f.strip + ' your face, I can write angle brackets too'
 	end
 
 	'<?xml version="1.0" encoding="UTF-8"?>
