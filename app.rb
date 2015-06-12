@@ -18,20 +18,33 @@ auth_token = ENV['MY_SEKRET_TWILIO_TOKEN']
 
 
 get '/' do 
-	puts params
-	# twiml = Twilio::TwiML::Response.new do |r|
-	# 	r.Message params['Body'] + ' your face'
-	# end
-	# twiml.text
-	f = params['Body']
-	if f == nil || f.strip == ""
-		msg = "say something pls"
-	else
-		msg = f.strip + ' your face, I can write angle brackets too'
+	str = params['Body']
+	new_str = str.gsub(' ', '%20')
+	base = "https://www.google.com/search?q="
+	search_results = base << new_str
+
+	puts search_results
+
+	twiml = Twilio::TwiML::Response.new do |r|
+		r.Message search_results
 	end
 
-	'<?xml version="1.0" encoding="UTF-8"?>
-	<Response>
-	    <Message>' + msg + '</Message>
-	</Response>'
+	# if f == nil || f.strip == ""
+	# 	msg = "say something pls"
+	# else
+	# 	msg = f.strip + ' your face, I can write angle brackets too'
+	# end
+
+	# puts params
+	# twiml = Twilio::TwiML::Response.new do |r|
+	# 	r.Message msg
+	# end
+	# puts "twiml says: " + twiml.text
+	
+
+ #  'nope'
+	# '<?xml version="1.0" encoding="UTF-8"?>
+	# <Response>
+	#     <Message>' + msg + '</Message>
+	# </Response>'
 end
