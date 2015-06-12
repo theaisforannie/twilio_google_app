@@ -18,6 +18,7 @@ auth_token = ENV['MY_SEKRET_TWILIO_TOKEN']
 
 
 get '/' do 
+	puts params
 	# print params
 	# twiml = Twilio::TwiML::Response.new do |r|
 	# 	r.Message params
