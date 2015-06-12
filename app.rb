@@ -24,7 +24,7 @@ get '/' do
 	# end
 	# twiml.text
 	f = params['Body']
-	if f == nil
+	if f == nil || f.strip == ""
 		msg = "say something pls"
 	else
 		msg = f + ' your face, I can write angle brackets too'
