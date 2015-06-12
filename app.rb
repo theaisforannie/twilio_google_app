@@ -16,7 +16,7 @@ def msg(str)
 end
 
 get '/' do
-	str = params['Body']
+	str = params['Body'].downcase
 	puts msg(str)
 
 	twiml = Twilio::TwiML::Response.new do |r|
