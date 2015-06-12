@@ -3,10 +3,9 @@ require 'twilio-ruby'
 require 'sinatra'
 require 'yaml'
 
-suggestions = YAML.load_file("search_idea.yml")
-
 def msg(str)
 	if str == nil || str.strip == ""
+		suggestions = YAML.load_file("search_ideas.yml")
 		str = suggestions.sample
 		msg(str)
 	else
