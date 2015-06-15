@@ -25,8 +25,8 @@ end
 conn = PG.connect(host, port, nil, nil, dbname, user, password)
 
 
-def save_params(params)
-	"INSERT INTO #{table_name} (
+def save_params(params, table)
+	"INSERT INTO #{table} (
 		accountsid,
 		apiversion,
 		body,
@@ -80,7 +80,8 @@ def msg(str)
 end
 
 get '/' do
-	conn.exec save_params(params)
+	conn.exec save_params(params, table_name)
+	
 	str = params['Body'].downcase
 	
 	puts msg(str)
